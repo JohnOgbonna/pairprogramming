@@ -1,0 +1,10 @@
+App.js ->(link)->Select page (parent)->(child)attack page->App.js
+
+
+Battle plan: turn-based response: player one goes 1st, player 2 responds, player 2 then goes first, player 1 responds
+
+-for battle plan, attack does 100 base damage, multiplied by (attack stat/1000)/(defense stat/1000) 
+-charge up option adds 300 endurance 
+Each attack takes 350 endurance, 
+Block option will decrease base attack by a factor of (100/defense stat *3)
+When any hp =<0 game is over, other player wins

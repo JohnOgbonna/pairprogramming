@@ -30,6 +30,9 @@ class startScreen extends Component {
       this.setState({ready:'ready'}); 
      
     } 
+    console.log('player 1 is ' + this.state.player1);
+    console.log('player 2 is ' + this.state.player2);
+    console.log('venue is ' + this.state.venue);
     console.log(this.state.ready)
   }
 
