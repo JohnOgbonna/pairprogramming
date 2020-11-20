@@ -106,16 +106,17 @@ class fightPage extends Component{
                     twochoice: ''
                 })               
                 } 
+                if(this.state.turn<4 && this.state.fighters[0].hp >0 && this.state.fighters[1].hp <= 0){ 
+                    this.setState({turn: 4})
+                } 
+                
+                if(this.state.turn < 4 && this.state.fighters[0].hp <= 0 && this.state.fighters[1].hp > 0){ 
+                    this.setState({turn: 5})
+                } 
+                
         }
        
-            if(this.state.turn<4 && this.state.fighters[0].hp >0 && this.state.fighters[1] <= 0){ 
-                this.setState({turn: 4})
-            } 
             
-            if(this.state.turn < 4 && this.state.fighters[0].hp <= 0 && this.state.fighters[1] > 0){ 
-                this.setState({turn: 5})
-            } 
-
             if(this.state.turn===0 && this.state.onechoice && !this.state.twochoice){ 
                 this.setState({turn:1})
             } 
@@ -127,7 +128,9 @@ class fightPage extends Component{
             } 
             if(this.state.turn===3 && this.state.onechoice && this.state.twochoice){ 
                 compare(this.state.onechoice, this.state.twochoice) 
-            }
+            } 
+            
+
     }
 
     render(){  
