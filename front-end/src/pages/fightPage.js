@@ -9,7 +9,7 @@ class fightPage extends Component{
         turn: 0, 
         onechoice: '', 
         twochoice: '', 
-        winner: 'noone'
+
     } 
     
     componentDidMount(){ 
@@ -41,26 +41,13 @@ class fightPage extends Component{
         const compare = (oneschoice, twoschoice) =>{ 
         
             let playerArray = [...this.state.fighters]
-                //player 1 attacks 
-            if(this.state.fighters[0].hp <=0 && this.state.fighters[1] > 0 && this.state.winner === 'noone'){ 
-                    this.setState({winner:this.state.fighters[1].name})
-                } 
-            if(this.state.fighters[0].hp > 0 && this.state.fighters[1] <= 0 && this.state.winner === 'noone'){ 
-                this.setState({winner:this.state.fighters[0].name})
-            }    
-            if(this.state.fighters[0].hp < 0 && this.state.fighters[1] < 0 && this.state.winner === 'tie'){ 
-                this.setState({winner:this.state.fighters[0].name})
-            }    
-
-
-
-        if(this.state.winner !== 'noone'){
+            //player 1 attacks
             if(oneschoice==='attack'){ 
                  playerArray[0].endurance-=350 //reduce p1 endurance b/c attack
                 if(twoschoice ==='block'){ 
                     //attack does 100 base damage, multiplied by (attack stat)/(defense stat) 
-                    //Block option will decrease base attack by a factor of (100/defense stat *7)
-                   playerArray[1].hp = playerArray[1].hp-(7*100*(100/playerArray[1].def)*(playerArray[0].attack*2)/(playerArray[1].def))
+                    //Block option will decrease base attack by a factor of (100/defense stat *10)
+                   playerArray[1].hp = playerArray[1].hp-(10*100*(100/playerArray[1].def)*(playerArray[0].attack*2)/(playerArray[1].def))
                 } 
                 else{ 
                     
@@ -74,8 +61,8 @@ class fightPage extends Component{
                  playerArray[1].endurance -= 350 //reduce p2 endurance b/c attack
                 if(oneschoice ==='block'){ 
                     //attack does 100 base damage, multiplied by (attack stat)/(defense stat) 
-                    //Block option will decrease base attack by a factor of (100/defense stat *7)
-                   playerArray[0].hp = playerArray[0].hp-(7*100*(100/playerArray[0].def)*(playerArray[1].attack*2)/(playerArray[0].def))
+                    //Block option will decrease base attack by a factor of (100/defense stat *10)
+                   playerArray[0].hp = playerArray[0].hp-(10*100*(100/playerArray[0].def)*(playerArray[1].attack*2)/(playerArray[0].def))
                 } 
     
                 else{ 
@@ -119,9 +106,16 @@ class fightPage extends Component{
                     twochoice: ''
                 })               
                 } 
-        
+        }
        
-        
+            if(this.state.turn<4 && this.state.fighters[0].hp >0 && this.state.fighters[1] <= 0){ 
+                this.setState({turn: 4})
+            } 
+            
+            if(this.state.turn < 4 && this.state.fighters[0].hp <= 0 && this.state.fighters[1] > 0){ 
+                this.setState({turn: 5})
+            } 
+
             if(this.state.turn===0 && this.state.onechoice && !this.state.twochoice){ 
                 this.setState({turn:1})
             } 
@@ -133,10 +127,8 @@ class fightPage extends Component{
             } 
             if(this.state.turn===3 && this.state.onechoice && this.state.twochoice){ 
                 compare(this.state.onechoice, this.state.twochoice) 
-            } 
-        } 
-    } 
-}
+            }
+    }
 
     render(){  
         console.log(this.state.fighters)
@@ -178,11 +170,9 @@ class fightPage extends Component{
              this.state.fighters.length >0 &&   
             <Game
             turn ={this.state.turn} 
-            change = {changeTurn} 
             players = {this.state.fighters}
             onesChoice ={onesChoice} 
-            twosChoice ={twosChoice} 
-            winner = {this.state.winner}
+            twosChoice ={twosChoice}
             
             /> 
             
