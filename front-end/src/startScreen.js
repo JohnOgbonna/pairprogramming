@@ -31,6 +31,9 @@ class startScreen extends Component {
       this.setState({ready:'ready'}); 
      
     } 
+    console.log('player 1 is ' + this.state.player1);
+    console.log('player 2 is ' + this.state.player2);
+    console.log('venue is ' + this.state.venue);
     console.log(this.state.ready)
   }
 
@@ -40,7 +43,7 @@ class startScreen extends Component {
   
      
     <div>
-    <div className = "select">
+    <div className = "select"> 
     <div className="pdivider">
       <div className="player1select">
         <h1>Player 1 Select Character</h1> 
@@ -56,22 +59,25 @@ class startScreen extends Component {
         <button className='vegeta' onClick ={()=>this.setPlayer2('vegeta')} >Vegeta</button>
         <button className='cell' onClick ={()=>this.setPlayer2('cell')} >Cell</button>
         <button className='freeza' onClick ={()=>this.setPlayer2('freeza')}>Freeza</button>
+        </div>
       </div>  
       </div>
       <div className="venueselect"> 
-        <h1 className="venueheader">Select Battleground!</h1>
+        <h1 className="venueheader">Select Battleground!</h1> 
+        
         <div className="buttonmover">
         <button className="namek"  onClick={()=>{this.setVenue('namek')}}>Namek</button> 
         <button className="kamehouse" onClick={()=>{this.setVenue('kamehouse')}}>Kamehouse</button>  
         <button className="cellgames"  onClick={()=>{this.setVenue('cellgames')}}>Cellgames</button> 
+      </div> 
       </div>
 </div>
     </div> 
 
     <div className ="background-title"> 
 
-     <Link to= {`fight/${this.state.player1}/${this.state.player2}/${this.state.venue}`}><div className ={this.state.ready} id="battlefight">BEGIN!</div></Link>
-    </div>
+     <Link to= {`fight/${this.state.player1}/${this.state.player2}/${this.state.venue}`}><div className ={this.state.ready} id ="battlefight">BEGIN!</div></Link>
+    </div> 
     </div>
   
     

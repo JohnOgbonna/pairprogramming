@@ -8,19 +8,23 @@ app.use(cors());
 let goku ={ 
     attack: 1500, 
     def: 1000, 
-    endurance:1200, 
+    endurance:1250, 
     name: 'goku',
     id: 0, 
-    hp: 1000
+    hp: 1000,
+    maxhp:1000, 
+    maxendurance: 1250
 } 
 
 let vegeta ={ 
-    attack: 1200,
+    attack: 1175,
     def: 1250, 
-    endurance: 1100,
+    endurance: 1110,
     name: 'vegeta', 
     id: 1,
-    hp:1150
+    hp:1150,
+    maxhp:1150, 
+    maxendurance: 1110
 } 
 
 let cell={ 
@@ -29,16 +33,20 @@ let cell={
     endurance: 850,
     name: 'cell', 
     id: 2,
-    hp: 900
+    hp: 950,
+    maxhp: 950, 
+    maxendurance: 850
 } 
 
 let freeza={ 
     attack: 1300, 
     def: 1000, 
-    endurance: 1500,
-    name: 'cell', 
+    endurance: 1350,
+    name: 'freeza', 
     id: 3,
-    hp: 1000
+    hp: 1000,
+    maxhp:1000, 
+    maxendurance: 1500
 } 
 
 app.get('/goku', (req, res) => { 
