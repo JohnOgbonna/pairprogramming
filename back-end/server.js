@@ -10,7 +10,8 @@ let goku ={
     def: 1000, 
     endurance:1200, 
     name: 'goku',
-    id: 0
+    id: 0, 
+    hp: 1000
 } 
 
 let vegeta ={ 
@@ -18,15 +19,17 @@ let vegeta ={
     def: 1250, 
     endurance: 1100,
     name: 'vegeta', 
-    id: 1
+    id: 1,
+    hp:1150
 } 
 
 let cell={ 
-    attack: 1800,
-    def: 500, 
+    attack: 2000,
+    def: 700, 
     endurance: 850,
     name: 'cell', 
-    id: 2
+    id: 2,
+    hp: 900
 } 
 
 let freeza={ 
@@ -34,7 +37,8 @@ let freeza={
     def: 1000, 
     endurance: 1500,
     name: 'cell', 
-    id: 3
+    id: 3,
+    hp: 1000
 } 
 
 app.get('/goku', (req, res) => { 

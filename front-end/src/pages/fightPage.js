@@ -1,39 +1,64 @@
 import {React, Component} from 'react'; 
 import axios from 'axios'; 
+import Game from './game'
 
 
 class fightPage extends Component{ 
     state={ 
-        fighters:[]
-    }
-      
+        fighters:[],
+        turn: 0
+    } 
+
+   
+     
         
     
     componentDidMount(){ 
-        
+      let characters =[]  
+
        axios.get(`http://localhost:8080/${this.props.match.params.player1}`)
         .then(res=>{
-           this.setState({fighters:[...res.data]})
+          characters.push(res.data) 
+        
         }) 
-        .catch(alert('could not get player 1 info')) 
+        .catch(error=>{
+           alert('Could not get player 1 info')
+            }
+          )    
     
         axios.get(`http://localhost:8080/${this.props.match.params.player2}`)
         .then(res=>{
-            this.setState({fighters:[...res.data]})
+            characters.push(res.data)
+            console.log(characters)
+            this.setState({fighters:characters}) 
+            console.log(this.state.fighters)
         }) 
-        .catch(alert('could not get player 2 info'))
+        .catch(error=>{
+            alert('Could not get player 2 info')
+            }
+          )     
     }
 
-    render(){ 
-       
+    render(){  
+        console.log(this.state.fighters)
+        console.log(this.state.fighters[0])
+        const changeTurn = (turn)=>{ 
+            if(turn===0){ 
+                this.setState({turn:1})
+            } 
+            if(turn===1){ 
+                this.setState({turn:0})
+            } 
+        } 
     
         return( 
-            <div>
-                <h1>player 1 is{this.state.fighters[0].name}</h1> 
-                <h1>player 2 is{this.state.fighters[1].name}</h1> 
-                <h1>fighting at {this.props.match.params.venue}</h1>
-            </div>
-
+            <Game
+            turn ={this.state.turn} 
+            change = {changeTurn} 
+            players = {this.state.fighters}
+            
+            
+            />
         )
     }
 } 
