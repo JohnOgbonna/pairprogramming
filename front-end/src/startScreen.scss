@@ -1,0 +1,87 @@
+@use '../assets/partials/variables' as *;
+@use '../assets/partials/fonts' as *;
+
+.select{
+    background-image:url('./assets/landscapes/background1.jpg');
+    background-position:center;
+    background-size:cover;
+    height:100vh;
+}
+
+.goku{
+
+
+}
+
+.vegeta{
+
+}
+
+.cell{
+
+}
+
+.freeza{
+
+}
+.namek{
+  
+}
+
+.pdivider{
+    display:flex;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.venueselect{
+    display:flex;
+    flex-direction:column;
+    justify-content: space-evenly;
+    align-content: center;
+    margin-top:300px;
+}
+
+.venueheader{
+    text-align:center;
+    color:red;
+    text-shadow: 1px black;
+    background-color:black;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+h1{
+    color:orange;
+    background-color:black;
+}
+
+button{
+    height:48px;
+    position:relative;
+    width:224px;
+    background-color:black;
+    color:yellow;
+    border-radius: 4px;
+    text-align:center;
+    display:inline;
+    font-size: 20px;
+}
+
+.buttonmover{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+#battlefight{
+text-align:center;
+    background-color:blue;
+    color:yellow;
+    font-size:100px;
+    text-decoration:none;
+
+}
